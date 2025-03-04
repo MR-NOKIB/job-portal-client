@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import singInLottieData from "../../assets/lottie/login.json"
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import GoogleLogin from '../Shared/SocialLogin/GoogleLogin';
 
 const SignIn = () => {
     const { signInUser } = useContext(AuthContext);
@@ -49,6 +50,7 @@ const SignIn = () => {
                             </div>
                             <button className="btn btn-neutral mt-4">Sign In</button>
                         </fieldset>
+                        <GoogleLogin></GoogleLogin>
                     </form>
                 </div>
             </div>
