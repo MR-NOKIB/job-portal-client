@@ -2,11 +2,13 @@ import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
 import singInLottieData from "../../assets/lottie/login.json"
 import AuthContext from '../../context/AuthContext/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../Shared/SocialLogin/GoogleLogin';
 
 const SignIn = () => {
     const { signInUser } = useContext(AuthContext);
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
     const handleSignIn = e => {
@@ -19,7 +21,7 @@ const SignIn = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result.user)
-                navigate('/')
+                navigate(from, {replace: true})
             })
             .catch(err => {
                 console.error(err);
